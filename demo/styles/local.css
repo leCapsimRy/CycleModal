@@ -1,0 +1,41 @@
+/* CycleModal  theme Exhibition ================================================================================= */
+*{outline:none !important}
+html, body{  -webkit-text-size-adjust:none !important;background-color:#fff;font:12px/1 'Open Sans',Arial,Helvetica,sans-serif;color:#777;text-align:center}
+body{overflow-x:hidden}
+img{border:0;vertical-align:top}
+
+a{color:#444;text-decoration:none;transition:all 0.3s}
+a:visited,a:focus{text-decoration:none}
+a:hover{color:#09b8ae;-webkit-transition: color .25s linear;transition: color .25s linear;text-decoration:none;}
+:focus{outline:0}
+form{display:inline}
+
+.btn-primary{color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.25);background-color:#08c;border-color:#08c}
+.btn{display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;cursor:pointer;background-image:none;border:1px solid transparent;white-space:nowrap;padding:6px 12px;font-size:14px;line-height:1.42857143;border-radius:4px}
+.modal-content{box-shadow:none!important;border:none!important}
+.modal-dialog { width:80%; max-width:970px;}
+
+@media (min-width: 768px){
+.modal-dialog {width: auto;}
+.checkout-cart-index .modal-body .element{ width:45%;}
+}
+@media (max-width: 1024px){.top-links-icon{ display:none;}	}
+.modal-body{ padding:0;}
+.modal-dialog {     position:absolute;top: 45%; left: 50%; transform: translateX(-50%) translateY(-50%) !important;-webkit-transform: translateX(-50%) translateY(-50%) !important;-moz-transform: translateX(-50%) translateY(-50%) !important;-o-transform: translateX(-50%) translateY(-50%) !important; -ms-transform: translateX(-50%) translateY(-50%) !important; }
+.modal-dialog  .close-new{width: 100%; margin-bottom: 20px;border: 0; background: transparent; color: #fff;  padding-top: 10px;}
+.modal-dialog  .close-new i{ font-size:45px;}
+.modal-dialog  .modal-content .modal-body-title{     padding: 18px 0px; border-bottom: 1px solid #eeeeee; text-transform:uppercase}
+.modal-dialog  .modal-content .standard-product-list{ padding: 15px;}
+@media (max-width: 320px) {
+.modal-dialog{
+    width: 90%!important;
+    left: 50%!important;
+    position: absolute;
+    top: 0%;
+    margin: 0 auto;
+    transform: translateX(-50%) translateY(-0%) !important;
+    -webkit-transform: translateX(-50%) translateY(0%) !important;
+    -moz-transform: translateX(-50%) translateY(0%) !important;
+    -o-transform: translateX(-50%) translateY(0%) !important;
+    -ms-transform: translateX(-50%) translateY(0%) !important;}
+}

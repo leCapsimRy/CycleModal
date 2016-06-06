@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CycleModal</title>
+</head>
+<style>
+@font-face{
+  font-family:"Octember";
+  src:url('./fonts/OctemberScript.ttf');
+}
+  *{padding:0;margin:0;font-family:Microsoft YaHei;}
+  body{
+    width:100%;
+    height:100%;
+  }
+  .title{
+    font-family:"Octember";
+    font-size:80px;
+    color:#000;
+    text-align: center;
+    width:100%;
+    position: absolute;
+    z-index:100;
+    top:10%;
+    cursor: context-menu;
+  }
+  iframe{
+    position: absolute;
+    z-index:99;
+  }
+</style>
+<body>
+  <div class="title">Cycle Modal</div>
+  <iframe width="100%" height="100%" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" src="./demo/demo.html"></iframe>
+</body>
+</html>

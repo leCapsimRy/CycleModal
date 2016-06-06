@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CycleModal-Demo</title>
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/iconfont.css">
+  <link rel="stylesheet" href="styles/local.css">
+  <style>
+  html{
+    background:#f8f8f8;
+  }
+  .container{
+    height:200px;
+    display: none;
+  }
+  .modal-body{
+    padding:10px;
+  }
+  .cycle__wai{
+    position: absolute;
+    width:100%;
+    top:80%;
+    background:#f8f8f8;
+  }
+  .cycle__wai>a{
+    margin-right: 80px;
+    background-color:rgba(0,0,0,0);
+    border:1px solid #000;
+    color:#000;
+  }
+  a:hover{
+    background:#000 !important;
+    color:#fff !important;
+  }
+  .btn{
+    background-color:rgba(0,0,0,0);
+    border:1px solid #000;
+    color:#000;
+  }
+  .btn:hover{
+    background:#000 !important;
+    color:#fff !important;
+  }
+  </style>
+</head>
+<body>
+  <!-- 被复制的层 -->
+  <div class="container">
+    <div id="container">
+      <form id="aaa" action="/" target="_blank">
+        This is a bootstrap based and jQuery, the primary mode of the box.
+        <br></br>
+        The current style is relatively simple,
+        <br></br>
+        but it supports the insertion of three modes,
+        <br></br>
+        the current can be used to meet the simple.
+        <br></br>
+        <button type="submit" class="btn btn-primary">submit form</button>
+      </form>
+    </div>
+  </div>
+
+
+ <!-- 点击弹窗 -->
+  <div class="cycle__wai">
+    <a role="button" class="quickview-icon-new-form btn btn-primary" data-toggle="modal" data-target="#modal-simple">Launch demo modal <b>FORM</b></a>
+    <a role="button" class="quickview-icon-new-movie btn btn-primary" data-iframe-url="https://player.vimeo.com/video/137112658" data-toggle="modal" data-target="#modal-simple">Launch demo modal <b>MOVIE</b></a>
+    <a role="button" class="quickview-icon-new-href btn btn-primary" data-toggle="modal" data-target="#modal-simple">Launch demo modal <b>HREF</b></a>
+  </div>
+  <!-- 弹窗层 -->
+  <div class="modal fade" id="modal-simple" tabindex="-1" aria-labelledby="simple-label" style="display: none;">
+    <div class="modal-dialog" role="dialog">
+        <button type="button" class="close-new" data-dismiss="modal" aria-label="Close">
+            <i class="photofont icon photo-tanchu-roundclose"></i>
+        </button>
+        <div class="modal-content modal-content__form">
+            <div class="modal-body">
+              <!-- 内容部分 -->
+            </div>
+        </div>
+        <div class="modal-content modal-content__movie">
+            <div class="modal-body">
+              <!-- 内容部分 -->
+            </div>
+        </div>
+        <div class="modal-content modal-content__href">
+            <div class="modal-body">
+              <!-- 内容部分 -->
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+<script src="scripts/jquery-1.10.2.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/CycleModal.min.js"></script>
+<script>
+$(function(){
+  /****************************************** 插件使用方式  start **************************************************/
+  var form = CycleModal.modalForm({
+    mainDom  : $(".modal-content__form"),//需要填充到该Dom中
+    stuffDom : $(".container"),//材料Dom，复制该Dom的内容，填充到mainDom中
+  });
+  var movie = CycleModal.modalMovie({
+    mainDom  : $(".modal-content__movie"),//需要填充到该Dom中
+    stuffUrl : $(".quickview-icon-new-movie").attr("data-iframe-url"),//要填充的内容
+    stuffHeight : 360,//iframe的高度  默认为360，可不填
+    stuffWidth : 640,//iframe的宽度  默认640，可不填
+  });
+  var href = CycleModal.modalHref({
+    mainDom : $(".modal-content__href"),//需要填充到该Dom中
+    stuffContent : '<a href="http://www.baidu.com">点击跳转</a>',//要填充的内容，可在html中编辑好再填充到此处
+  });
+  //调用form的弹窗事件
+  $(".quickview-icon-new-form").click(function(){
+    form.showModal();
+  });
+  //调用movie的弹窗事件
+  $(".quickview-icon-new-movie").click(function(){
+    movie.showModal();
+  });
+  //调用href的弹窗事件
+  $(".quickview-icon-new-href").click(function(){
+    href.showModal();
+  });
+  //关闭浮窗
+  $('#modal-simple').on('hide.bs.modal', function () {
+    if(this.className.indexOf("CycleForm")>-1){//如果是form层弹窗
+      form.hideModal();
+    }else if(this.className.indexOf("CycleMovie")>-1){
+      movie.hideModal();
+    }else if(this.className.indexOf("CycleHref")>-1){
+      href.hideModal();
+    }
+  });
+  /****************************************** 插件使用方式  end **************************************************/
+});
+</script>
+</html>
