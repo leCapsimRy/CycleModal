@@ -5,7 +5,7 @@
   <title>CycleModal-Demo</title>
   <link rel="stylesheet" href="styles/bootstrap.min.css">
   <link rel="stylesheet" href="styles/iconfont.css">
-  <link rel="stylesheet" href="styles/local.css">
+  <link rel="stylesheet" href="styles/CycleModal.css">
   <style>
   html{
     background:#f8f8f8;
@@ -20,11 +20,11 @@
   .cycle__wai{
     position: absolute;
     width:100%;
-    top:80%;
+    top:35%;
     background:#f8f8f8;
   }
   .cycle__wai>a{
-    margin-right: 80px;
+    margin:0 20px;
     background-color:rgba(0,0,0,0);
     border:1px solid #000;
     color:#000;
@@ -42,7 +42,7 @@
     background:#000 !important;
     color:#fff !important;
   }
-
+  /* title */
   @font-face{
     font-family:"Octember";
     src:url('../fonts/OctemberScript.ttf');
@@ -57,11 +57,52 @@
     top:20%;
     cursor: context-menu;
   }
+  pre.html{
+    width:60%;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    margin-left: -30%;
+    top: 44%;
+  }
+  pre.script{
+    width:60%;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    margin-left: -30%;
+    top: 55%;
+  }
   </style>
 </head>
 <body>
 
   <div class="title">Cycle Modal</div>
+  <pre class="html">
+    <!-- 弹窗层 -->
+    &lt;div id="CycleModal" data-type="form/movie/href"&gt;&lt;/div&gt;
+  </pre>
+  <pre class="script">
+    var form = CycleModal.modalForm({
+      mainDom  : $(".modal-content__form"),
+      stuffDom : $(".container"),
+    });
+    var movie = CycleModal.modalMovie({
+      mainDom  : $(".modal-content__movie"),
+      stuffUrl : $(".quickview-icon-new-movie").attr("data-iframe-url"),
+      stuffHeight : 360,
+      stuffWidth : 640,
+    });
+    var href = CycleModal.modalHref({
+      mainDom : $(".modal-content__href"),
+      stuffContent : '<a href="http://www.baidu.com" target="_blank">Click Jump</a>',
+    });
+
+    &lt;!-- Calling CycleModal method --&gt;
+    $("xxx").click(function(){
+      form.showModal();
+    });
+  </pre>
   <!-- 被复制的层 -->
   <div class="container">
     <div id="container">
@@ -87,28 +128,7 @@
     <a role="button" class="quickview-icon-new-href btn btn-primary" data-toggle="modal" data-target="#modal-simple">Launch demo modal <b>HREF</b></a>
   </div>
   <!-- 弹窗层 -->
-  <div class="modal fade" id="modal-simple" tabindex="-1" aria-labelledby="simple-label" style="display: none;">
-    <div class="modal-dialog" role="dialog">
-        <button type="button" class="close-new" data-dismiss="modal" aria-label="Close">
-            <i class="photofont icon photo-tanchu-roundclose"></i>
-        </button>
-        <div class="modal-content modal-content__form">
-            <div class="modal-body">
-              <!-- 内容部分 -->
-            </div>
-        </div>
-        <div class="modal-content modal-content__movie">
-            <div class="modal-body">
-              <!-- 内容部分 -->
-            </div>
-        </div>
-        <div class="modal-content modal-content__href">
-            <div class="modal-body">
-              <!-- 内容部分 -->
-            </div>
-        </div>
-    </div>
-  </div>
+  <div id="CycleModal" data-type="form/movie/href"></div>
 </body>
 <script src="scripts/jquery-1.10.2.min.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
@@ -128,7 +148,7 @@ $(function(){
   });
   var href = CycleModal.modalHref({
     mainDom : $(".modal-content__href"),//需要填充到该Dom中
-    stuffContent : '<a href="http://www.baidu.com" target="_blank">点击跳转</a>',//要填充的内容，可在html中编辑好再填充到此处
+    stuffContent : '<a href="http://www.baidu.com" target="_blank">Click Jump</a>',//要填充的内容，可在html中编辑好再填充到此处
   });
   //调用form的弹窗事件
   $(".quickview-icon-new-form").click(function(){
@@ -141,16 +161,6 @@ $(function(){
   //调用href的弹窗事件
   $(".quickview-icon-new-href").click(function(){
     href.showModal();
-  });
-  //关闭浮窗
-  $('#modal-simple').on('hide.bs.modal', function () {
-    if(this.className.indexOf("CycleForm")>-1){//如果是form层弹窗
-      form.hideModal();
-    }else if(this.className.indexOf("CycleMovie")>-1){
-      movie.hideModal();
-    }else if(this.className.indexOf("CycleHref")>-1){
-      href.hideModal();
-    }
   });
   /****************************************** 插件使用方式  end **************************************************/
 });
